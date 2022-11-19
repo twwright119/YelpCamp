@@ -13,6 +13,8 @@ const passport = require("passport");
 const passportLocal = require("passport-local");
 const User = require("./models/user");
 
+const secret = process.env.SECRET || "supersecretsecret";
+
 const MongoStore = require("connect-mongo");
 
 const helmet = require("helmet");
@@ -52,8 +54,6 @@ const options = {
   secret,
   touchAfter: 24 * 60 * 60,
 };
-
-const secret = process.env.SECRET || "supersecretsecret";
 
 const sessionConfig = {
   store: MongoStore.create(options),
